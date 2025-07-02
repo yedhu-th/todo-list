@@ -7,7 +7,6 @@ const Input = (props) => {
         setEnteredTask(e.target.value);
     }
 
-
     const handleSubmit = (event) => {
         event.preventDefault();
         props.onAddTask(enteredTask);

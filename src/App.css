@@ -2,17 +2,14 @@ html {
   box-sizing: border-box;
 }
 
-
 body {
   background-color: #9400FF;
   color: white;
 }
 
-
 .App {
   text-align: center;
 }
-
 
 main {
   border-radius: 6px;
@@ -21,7 +18,6 @@ main {
   width: 400px;
   padding: 32px;
 }
-
 
 .card {
   display: flex;
@@ -35,13 +31,11 @@ main {
   width: 350px;
 }
 
-
 .card:nth-child(4n + 1) {
   background: linear-gradient(90deg,
       rgba(93, 12, 255, 1) 0%,
       rgba(155, 0, 250, 1) 100%);
 }
-
 
 .card:nth-child(4n + 2) {
   background: linear-gradient(90deg,
@@ -49,13 +43,11 @@ main {
       rgba(250, 0, 135, 1) 100%);
 }
 
-
 .card:nth-child(4n + 3) {
   background: linear-gradient(90deg,
       rgba(20, 159, 255, 1) 0%,
       rgba(17, 122, 255, 1) 100%);
 }
-
 
 button {
   border: none;
@@ -65,14 +57,12 @@ button {
   cursor: pointer;
 }
 
-
 #tasks {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 10px;
 }
-
 
 form {
   width: 100%;
@@ -82,13 +72,11 @@ form {
   margin: 10px;
 }
 
-
 .task-input {
   border: none;
   border-radius: 6px;
   padding: 16px;
 }
-
 
 .navbar a{
   color: wheat;

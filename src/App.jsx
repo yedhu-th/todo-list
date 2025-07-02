@@ -9,9 +9,8 @@ import { BrowserRouter,Routes,Route } from 'react-router-dom'
 import About from './components/About'
 import Navbar from './components/navbar'
 
-
 function App() {
- 
+  
   return (
     <>
       <BrowserRouter>
@@ -31,10 +30,9 @@ function App() {
         </main>
       </div>
       </BrowserRouter>
-     
+      
     </>
   )
 }
-
 
 export default App

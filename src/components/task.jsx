@@ -1,42 +1,57 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Input from "./input";
 import Card from "./card";
 const Task =  () => {
 
-
-    const initial_task=[
-    {
-      id : 10,
-      text: "Task 1"
-    },
-    {
-      id : 11,
-      text : "Task 2"
-    },
-    {
-      id : 12,
-      text:"Task 3"
-    }
-  ];
-
+    const initial_task=[];
 
   const [Task,setTask] = useState(initial_task);
 
-
-  const addTaskHandler = (newTask) => {
+  const addTaskHandler = async (newTask) => {
     let newTaskObj = {
-        id : Math.random(),
-        text : newTask
+        task_id : Math.random(),
+        task_name : newTask
     };
-    setTask(prev => [
-        ...prev,newTaskObj
-    ]);
+    const response = await fetch("https://todo-backend-nmmo.onrender.com/create",{method: "POST",
+      headers: {
+        "content-Type" : "application/json"
+      },
+      body: JSON.stringify(newTaskObj),
+    })
+    if (response.status === 201){
+        getTask();
+        alert("New task added sucessfully");
+    }
+    else{
+      alert("Failed to add task");
+    }
+    
   }
 
-
-  const deleteTaskHandler = (taskId) => {
-    setTask(prev => prev.filter(item => item.id !== taskId));
+  const deleteTaskHandler = async (taskId) => {
+    const response = await fetch("https://todo-backend-nmmo.onrender.com/" + taskId,{
+      method:"DELETE"
+    })
+    if (response.status === 200){
+      alert("Task Deleted");
+      getTask();
+    }
+    else{
+      alert("Fail to Delete Task ");
+    }
   }
+  //calling backend api
+  const getTask = async () => {
+    const response= await fetch("https://todo-backend-nmmo.onrender.com/");
+    const taskList = await response.json();
+    console.log(response);
+    setTask(taskList);
+  }
+  //
+  useEffect(() => {
+    getTask();
+  },[]);
+
     return(
         <div id="tasks">
            <Input onAddTask={addTaskHandler}/>
